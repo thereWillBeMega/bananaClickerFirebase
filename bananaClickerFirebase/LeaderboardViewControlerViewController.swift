@@ -19,6 +19,8 @@ class LeaderboardViewControlerViewController: UIViewController, UITableViewDeleg
     
     @IBOutlet weak var inputOutlet: UITextField!
     
+    var addName = true
+    
     
         var players : [Player] = []
     var ref: DatabaseReference!
@@ -37,7 +39,15 @@ class LeaderboardViewControlerViewController: UIViewController, UITableViewDeleg
                     // building a Student object from the dictionary
                     let s = Player(dict: dict)
                     // adding the student object to the Student array
-                    self.players.append(s)
+            for i in self.players {
+                if i.name == s.name{
+                    self.addName = false
+                }
+            }
+            if self.addName{
+                self.players.append(s)
+            }
+            self.addName = true
                      self.tableViewOutlet.reloadData()
         // should only add the student if the student isn’t already in the array
         // good place to update the tableview also

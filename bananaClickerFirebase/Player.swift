@@ -23,14 +23,14 @@ class Player{
     }
     
     init(dict: [String: Any]){
-        if let a = dict["player"] as? Int{
+        if let a = dict["highScore"] as? Int{
                 highscore = a
             }
             else{
                 highscore = 0
             }
         
-        if let b = dict["player"] as? String{
+        if let b = dict["name"] as? String{
                 name = b
             }
             else{
